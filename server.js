@@ -20,9 +20,12 @@ const testdb = new sqlite3.Database(db_file, callback=()=>{
     console.log(`Opened database /${db_file}`);
     
     testdb.serialize(()=>{
-        testdb.run('CREATE TABLE IF NOT EXISTS articles (id TEXT PRIMARY KEY, title TEXT, author TEXT, publish DATE, edit DATE);')
-        testdb.run('INSERT INTO articles (id, title, author) VALUES ("000000000000", "This is a template article", "benuthoff");')
-        // Article IDs are strings of 12 numeric and (lowercase) alphabetic characters. (?)
+        // Create Articles Database
+        testdb.run('CREATE TABLE IF NOT EXISTS articles (id INTEGER PRIMARY KEY, access TEXT, title TEXT, author TEXT, publish DATE, edit DATE, hashed_password TEXT);')
+
+        // Create Users Database
+        testdb.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, name TEXT, bio TEXT, hashed_password TEXT);')
+
     });
     
 });

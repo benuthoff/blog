@@ -131,3 +131,6 @@ dist
 
 # Codespaces
 .devcontainer/
+
+# benuthoff/blog
+blog.db

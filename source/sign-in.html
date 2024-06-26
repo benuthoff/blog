@@ -3,7 +3,7 @@
 <head>
 
 	<title>blog name</title>
-	<link rel='stylesheet' href='./index.css'/>
+	<link rel='stylesheet' href='/static/index.css'/>
 
 	<!-- CDN Dependencies -->
 	<script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
@@ -16,11 +16,17 @@
 </head>
 <body>
 
+<div id='sign-in-modal'>
 
-<h1>sign in to your account</h1>
+	<h2>sign in to your account</h2>
 
-<input type='text' placeholder='username'/>
-<input type='password' placeholder='password'/>
+	<input type='text' placeholder='username'/>
+	<input type='password' placeholder='password'/>
+	
+	<button>Sign In</button>
+	<button onclick='history.back()'>Cancel</button>
+
+</div>
 
 
 </body>

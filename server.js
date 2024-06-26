@@ -24,7 +24,7 @@ const testdb = new sqlite3.Database(db_file, callback=()=>{
         testdb.run('CREATE TABLE IF NOT EXISTS articles (id INTEGER PRIMARY KEY, access TEXT, title TEXT, author TEXT, publish DATE, edit DATE, hashed_password TEXT);')
 
         // Create Users Database
-        testdb.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, name TEXT, bio TEXT, hashed_password TEXT);')
+        testdb.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, name TEXT, bio TEXT, hashed_password TEXT, image_url TEXT);')
 
     });
     
@@ -34,6 +34,9 @@ const testdb = new sqlite3.Database(db_file, callback=()=>{
 
 app.get('/', (req, res)=>{ // Home.
     res.sendFile('/workspaces/blog/source/index.html');
+});
+app.get('/sign-in', (req, res)=>{ // Home.
+    res.sendFile('/workspaces/blog/source/sign-in.html');
 });
 
 app.use('/static', express.static('static')); // Static Files. (js/css)

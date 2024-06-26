@@ -2,41 +2,47 @@
 <html>
 <head>
 
-	<title>blog name</title>
-	<link rel='stylesheet' href='./index.css'/>
+	<title>my blog.</title>
+	<link rel='stylesheet' href='/static/index.css'/>
+
+	<!-- CDN Dependencies -->
+	<script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
 
 	<!-- Google Fonts Import -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+	<link rel='preconnect' href='https://fonts.googleapis.com'>
+	<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+	<link href='https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap' rel='stylesheet'>
 
 </head>
-<body>
+<body><div id='app'>
 
+<div id='constrainer'>
+	
+	<h1>my blog.</h1>
 
-<h1>blog name here</h1>
+	<h3>Public Articles</h3>
+	<div class='article_list'>
+		<div v-for='article in public_articles'>
+			<div class='title'><a href='/'>{{article.title}}</a></div>
+			<div class='author'>by <a href='/'>{{article.author}}</a></div>
+			<div class='description'>{{article.description}}</div>
+			<div class='date published'>{{article.published}}</div>
+			<div v-if='article.edited' class='date edited'>Edited {{article.edited}}</div>
+		</div>
+	</div>
 
-<h3>Public Articles</h3>
-<div class='article_list'>
-	<div>
-		<a href='./'>I have so much to say.</a> (June 2024) by benuthoff
-	</div>
-	<div>
-		<a href='./'>Another blogpost.</a> (June 2024) by benuthoff
-	</div>
-	<div>
-		<a href='./'>This is a blogpost.</a> (June 2024) by benuthoff
-	</div>
-	<div>
-		<a href='./'>Welcome to blogging</a> (June 2024) by benuthoff
-	</div>
 </div>
 
-<br><br>
+<div class='signmein'>
+	<a href='/sign-in'>Sign In</a>
+</div>
+
 <footer>
-Created using <a href='https://github.com/benuthoff/blog/'>benuthoff/blog</a>.
+Created using <a href='https://github.com/benuthoff/blog/' target='_blank'>benuthoff/blog</a>.
 </footer>
 
 
+</div>
+<script src='/static/index.js'></script>
 </body>
 </html>

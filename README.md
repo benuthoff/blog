@@ -1,2 +1,3 @@
 # blog
-A Web-blog Server
+
+Created using Node.js, SQLite, and Express.js

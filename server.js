@@ -1,23 +1,26 @@
 /*
 
-    blog...
+    blog server backend
 
 */
 
+
+// Load configurations.
+require('dotenv').config();
+
+// Express Server Initialization.
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
 
-const port = 4222;
+// SQLite Database Initialization.
+const sqlite3 = require('sqlite3');
 
 
 /* Database Management */
-const sqlite3 = require('sqlite3');
-const db_file = 'blog.db';
+const testdb = new sqlite3.Database(process.env.SQLITE_DB, callback=()=>{
 
-const testdb = new sqlite3.Database(db_file, callback=()=>{
-
-    console.log(`Opened database /${db_file}`);
+    console.log(`Opened database /${process.env.SQLITE_DB}`);
     
     testdb.serialize(()=>{
         // Create Articles Database
@@ -34,7 +37,6 @@ const testdb = new sqlite3.Database(db_file, callback=()=>{
 });
 
 /* Server Endpoints */
-
 app.get('/', (req, res)=>{ // Home.
     res.sendFile('/workspaces/blog/source/index.html');
 });
@@ -44,6 +46,6 @@ app.get('/sign-in', (req, res)=>{ // Home.
 
 app.use('/static', express.static('static')); // Static Files. (js/css)
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
     console.log(`Listening on :${port}`);
 });

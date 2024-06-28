@@ -21,10 +21,13 @@ const testdb = new sqlite3.Database(db_file, callback=()=>{
     
     testdb.serialize(()=>{
         // Create Articles Database
-        testdb.run('CREATE TABLE IF NOT EXISTS articles (id INTEGER PRIMARY KEY, access TEXT, title TEXT, author TEXT, publish DATE, edit DATE, hashed_password TEXT);')
+        testdb.run('CREATE TABLE IF NOT EXISTS articles (access TEXT PRIMARY KEY, title TEXT, author TEXT, publish DATE, edit DATE, hashed_password TEXT);')
 
         // Create Users Database
-        testdb.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, name TEXT, bio TEXT, hashed_password TEXT, image_url TEXT);')
+        testdb.run('CREATE TABLE IF NOT EXISTS users (username TEXT PRIMARY KEY, name TEXT, bio TEXT, profile_image TEXT);')
+
+        // Create Log-in Credentials Database
+        testdb.run('CREATE TABLE IF NOT EXISTS logins (username TEXT PRIMARY KEY, hashed_password TEXT);')
 
     });
     
